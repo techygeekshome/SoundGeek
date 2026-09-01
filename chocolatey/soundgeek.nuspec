@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>soundgeek</id>
+    <version>1.0.0</version>
+    <title>SoundGeek</title>
+    <authors>TechyGeeksHome</authors>
+    <owners>techygeekshome</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">GPL-3.0-or-later</license>
+    <projectUrl>https://techygeekshome.info/soundgeek/</projectUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/techygeekshome/SoundGeek@main/icons/soundgeek-256.png</iconUrl>
+    <description>SoundGeek cleans up a recording on your own machine and writes the result beside the
+original. Nothing is uploaded, so an interview or a meeting never leaves the computer.
+
+* Remove background noise: hiss, a fan, traffic, room tone
+* Find and remove mains hum completely, 50 Hz or 60 Hz, measured rather than assumed
+* Even out the loudness to a target you pick, measured to ITU-R BS.1770
+* Three levels of cleanup, and the app is plain about what each one costs
+* No account, no adverts, no bundled offers, no per-minute charge
+
+Open source under GPL-3.0. The .NET 8 runtime is bundled, so there is nothing to install first.</description>
+    <summary>Free offline audio cleanup for Windows, noise, hum and levels, on your own machine</summary>
+    <releaseNotes>https://github.com/techygeekshome/SoundGeek/releases/tag/v1.0.0</releaseNotes>
+    <copyright>Copyright (c) 2026 TechyGeeksHome</copyright>
+    <tags>soundgeek audio noise-reduction denoise hum loudness lufs offline windows foss</tags>
+    <projectSourceUrl>https://github.com/techygeekshome/SoundGeek</projectSourceUrl>
+    <packageSourceUrl>https://github.com/techygeekshome/SoundGeek</packageSourceUrl>
+    <docsUrl>https://techygeekshome.info/soundgeek/</docsUrl>
+    <bugTrackerUrl>https://github.com/techygeekshome/SoundGeek/issues</bugTrackerUrl>
+  </metadata>
+</package>
