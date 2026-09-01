@@ -1,0 +1,33 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      # The whole solution is plain net8.0 and builds on Linux, Avalonia included, so the
+      # checks run on a cheap runner. SoundGeek.Core carries the parts worth proving - the FFT,
+      # the loudness measurement against a known tone, the hum detector, the WAV round trip at
+      # every bit depth and the never-overwrite rule - and none of them touch Windows.
+      - name: Build
+        run: dotnet build SoundGeek.sln -c Release
+
+      # The speech model is native code plus a downloaded file, which is exactly the sort of
+      # thing that passes a unit test and then falls over on a real machine. It is half a
+      # megabyte, so CI fetches it and runs it for real rather than skipping the one part that
+      # is hard to get right.
+      - name: Test
+        env:
+          SG_FETCH_MODEL: '1'
+        run: dotnet run --project tests/SoundGeek.Tests -c Release --no-build
