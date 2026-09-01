@@ -1,0 +1,17 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="SoundGeek.App"
+             RequestedThemeVariant="Dark">
+  <!-- Dark, not Default. Following the system theme is what made DiskGeek able to come up
+       light and look like a different product; the range asks for it explicitly now. -->
+  <Application.Styles>
+    <FluentTheme />
+  </Application.Styles>
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://SoundGeek/Themes/Dark.axaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>
