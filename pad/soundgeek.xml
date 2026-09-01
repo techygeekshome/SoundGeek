@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XML_DIZ_INFO>
+  <MASTER_PAD_VERSION_INFO>
+    <MASTER_PAD_VERSION>4.0</MASTER_PAD_VERSION>
+    <MASTER_PAD_EDITOR>TechyGeeksHome</MASTER_PAD_EDITOR>
+    <MASTER_PAD_INFO>Portable Application Description, or PAD for short, is a data set that is used by shareware authors to disseminate information to anyone interested in their software products.</MASTER_PAD_INFO>
+  </MASTER_PAD_VERSION_INFO>
+  <Company_Info>
+    <Company_Name>TechyGeeksHome</Company_Name>
+    <Address_1></Address_1>
+    <Address_2></Address_2>
+    <City_Town></City_Town>
+    <State_Province></State_Province>
+    <Zip_Postal_Code></Zip_Postal_Code>
+    <Country>United Kingdom</Country>
+    <Company_WebSite_URL>https://techygeekshome.info</Company_WebSite_URL>
+    <Contact_Info>
+      <Author_First_Name>Andy</Author_First_Name>
+      <Author_Last_Name>Armstrong</Author_Last_Name>
+      <Author_Email>techygeeks@outlook.com</Author_Email>
+      <Contact_First_Name>Andy</Contact_First_Name>
+      <Contact_Last_Name>Armstrong</Contact_Last_Name>
+      <Contact_Email>techygeeks@outlook.com</Contact_Email>
+    </Contact_Info>
+    <Support_Info>
+      <Sales_Email>techygeeks@outlook.com</Sales_Email>
+      <Support_Email>techygeeks@outlook.com</Support_Email>
+      <General_Email>techygeeks@outlook.com</General_Email>
+    </Support_Info>
+  </Company_Info>
+  <Program_Info>
+    <Program_Name>SoundGeek</Program_Name>
+    <Program_Version>1.0.0</Program_Version>
+    <Program_Release_Month>09</Program_Release_Month>
+    <Program_Release_Day>01</Program_Release_Day>
+    <Program_Release_Year>2026</Program_Release_Year>
+    <Program_Cost_Dollars>0</Program_Cost_Dollars>
+    <Program_Type>Freeware</Program_Type>
+    <Program_Release_Status>New Release</Program_Release_Status>
+    <Program_Install_Support>Install and Uninstall</Program_Install_Support>
+    <Program_OS_Support>Win10,Win11,WinServer</Program_OS_Support>
+    <Program_Language>English</Program_Language>
+    <Program_Change_Info>First release.</Program_Change_Info>
+    <Program_Specific_Category>Audio::Other</Program_Specific_Category>
+    <Program_Category_Class>Audio</Program_Category_Class>
+    <Program_System_Requirements>Windows 10 version 1809 or later, 64-bit. Nothing else to install. ffmpeg is optional and only needed for formats other than WAV.</Program_System_Requirements>
+    <File_Info>
+      <File_Size_Bytes>0</File_Size_Bytes>
+      <File_Size_K>0</File_Size_K>
+      <File_Size_MB>0</File_Size_MB>
+    </File_Info>
+    <Expire_Info>
+      <Has_Expire_Info>N</Has_Expire_Info>
+    </Expire_Info>
+  </Program_Info>
+  <Program_Descriptions>
+    <English>
+      <Keywords>noise removal, audio cleanup, hum removal, loudness, LUFS, normalise, offline, free, windows</Keywords>
+      <Char_Desc_45>Free offline audio cleanup for Windows</Char_Desc_45>
+      <Char_Desc_80>Cleans up a recording on your own machine, noise, hum and levels</Char_Desc_80>
+      <Char_Desc_250>SoundGeek writes a cleaned copy of a recording beside the original: background noise removed, mains hum gone, levels evened out. It all happens on your own machine. No account, no upload, no per-minute limit and no watermark.</Char_Desc_250>
+      <Char_Desc_450>SoundGeek cleans up a recording on your own machine and writes the result beside the original. Three levels of cleanup: levels and hum only, a gentle noise reduction that keeps the sample rate and channels as they were, and a speech model that is much stronger and comes back at 16 kHz mono. Mains hum is measured rather than assumed and removed completely. Loudness is evened out to a target you pick. Nothing is uploaded.</Char_Desc_450>
+      <Char_Desc_2000>SoundGeek cleans up a recording on your own machine.
+
+Drop a file in and SoundGeek writes a cleaned copy beside it: background noise gone, mains hum gone, levels evened out. WAV, MP3, M4A, FLAC, OGG, Opus, WMA, AAC, MP4, MKV, MOV, AVI and WebM are all read.
+
+There are three levels of cleanup and the app is plain about what each one costs. Levels and hum only leaves the audio otherwise untouched. The gentle option reduces steady noise by filtering and brings the recording back at exactly the sample rate and channel count it went in at. The strongest option uses a speech model and is far more effective, but it works at 16 kHz in mono, so that is what comes out. That is right for an interview, a meeting or a voice note, and wrong for music, and SoundGeek says so on the screen next to the option rather than in the small print.
+
+Mains hum is measured rather than assumed. SoundGeek works out whether a recording has 50 Hz or 60 Hz hum in it and notches out the fundamental and its harmonics, which removes it completely rather than merely reducing it.
+
+Loudness is measured to ITU-R BS.1770, the standard broadcasters and streaming services use, and brought to a target you choose, with a look-ahead limiter holding the peaks down without the clicks that plain clipping causes.
+
+Everything happens in this process, on this machine. There is no account, no server, no upload and no per-minute limit. The only thing the app ever downloads is a half megabyte speech model, from the Model screen, when you ask for it, and it is checked against a checksum recorded inside the application before it is kept.
+
+Your original is only ever read. The cleaned copy is written next to it, named after it, and if one is already there the next is numbered.
+
+Free to use, including at work. GPL-3.0. No paid tier.</Char_Desc_2000>
+    </English>
+  </Program_Descriptions>
+  <Web_Info>
+    <Application_URLs>
+      <Application_Info_URL>https://techygeekshome.info/soundgeek/</Application_Info_URL>
+      <Application_Order_URL></Application_Order_URL>
+      <Application_Screenshot_URL>https://techygeekshome.info/wp-content/uploads/2026/09/soundgeek-clean.png</Application_Screenshot_URL>
+      <Application_Icon_URL>https://techygeekshome.info/wp-content/uploads/2026/09/soundgeek-32.png</Application_Icon_URL>
+      <Application_XML_File_URL>https://raw.githubusercontent.com/techygeekshome/SoundGeek/main/pad/soundgeek.xml</Application_XML_File_URL>
+    </Application_URLs>
+    <Download_URLs>
+      <Primary_Download_URL>https://github.com/techygeekshome/SoundGeek/releases/latest/download/SoundGeekSetup.exe</Primary_Download_URL>
+      <Secondary_Download_URL>https://github.com/techygeekshome/SoundGeek/releases/latest/download/SoundGeek-portable.exe</Secondary_Download_URL>
+    </Download_URLs>
+  </Web_Info>
+</XML_DIZ_INFO>
