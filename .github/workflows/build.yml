@@ -31,3 +31,22 @@ jobs:
         env:
           SG_FETCH_MODEL: '1'
         run: dotnet run --project tests/SoundGeek.Tests -c Release --no-build
+
+      # The checks above run against a build from source, where every native library sits in a
+      # runtimes folder next to the assembly. The product does not ship that way: it ships as
+      # one self-contained executable with the natives bundled inside it, and some libraries
+      # cannot find themselves in there. TranscribeGeek shipped two versions able to install
+      # and unable to work because nothing ever ran the packaged shape.
+      #
+      # So the harness is published exactly the way the product is and run again. Linux rather
+      # than Windows only because this job is on a Linux runner; the bundling and the lookup
+      # are the same on both.
+      - name: Test the way it is actually packaged
+        env:
+          SG_FETCH_MODEL: '1'
+        run: |
+          dotnet publish tests/SoundGeek.Tests/SoundGeek.Tests.csproj \
+            -c Release -r linux-x64 --self-contained true \
+            -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true \
+            -o publish/checks
+          ./publish/checks/SoundGeek.Tests
