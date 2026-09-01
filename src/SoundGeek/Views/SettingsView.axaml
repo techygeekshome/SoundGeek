@@ -1,0 +1,117 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:SoundGeek.ViewModels"
+             x:Class="SoundGeek.Views.SettingsView"
+             x:DataType="vm:ShellViewModel">
+
+  <ScrollViewer>
+    <StackPanel Margin="26,20" Spacing="16" MaxWidth="820" HorizontalAlignment="Left">
+
+      <!-- Every app in the range says what it will not do, on screen, in the app -->
+      <Border Classes="card">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <TextBlock Text="What SoundGeek will not do" FontWeight="SemiBold" />
+          </Border>
+
+          <Border Classes="row">
+            <StackPanel Spacing="3">
+              <TextBlock Text="It does not send your recordings anywhere" FontWeight="SemiBold" />
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="Everything happens in this process, on this machine, using your own processor. There is no account, no server and no upload. The only thing the app ever downloads is the speech model, from the Model screen, when you ask for it." />
+            </StackPanel>
+          </Border>
+
+          <Border Classes="row">
+            <StackPanel Spacing="3">
+              <TextBlock Text="It does not touch your original" FontWeight="SemiBold" />
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="The cleaned copy is written next to the file it came from, named after it. The source file is only ever read. If a cleaned copy is already there, the next one is numbered rather than replacing it." />
+            </StackPanel>
+          </Border>
+
+          <Border Classes="row">
+            <StackPanel Spacing="3">
+              <TextBlock Text="It does not pretend to be a mastering studio" FontWeight="SemiBold" />
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="Noise reduction cannot put back what was never recorded. It can take several dB off steady hiss, a fan or traffic, remove mains hum completely, and even out the loudness. It cannot rescue a recording made in a wind tunnel, and it will say what it changed in numbers rather than claiming it fixed everything." />
+            </StackPanel>
+          </Border>
+
+          <Border Classes="row">
+            <StackPanel Spacing="3">
+              <TextBlock Text="It does not hide what the strongest cleanup costs" FontWeight="SemiBold" />
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="The speech model works at 16 kHz in mono, so that is what its output is. It is the right choice for an interview, a meeting or a voice note, and the wrong one for music. That is on the Clean screen next to the option, not buried here." />
+            </StackPanel>
+          </Border>
+
+          <Border Classes="row">
+            <StackPanel Spacing="3">
+              <TextBlock Text="It does not bundle ffmpeg" FontWeight="SemiBold" />
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="MP3, M4A, MP4 and the rest need ffmpeg to decode. SoundGeek runs it as a separate program if it finds one, and says so plainly if it does not, rather than quietly fetching a 90 MB binary you did not ask for. WAV files work either way." />
+            </StackPanel>
+          </Border>
+
+          <Border Classes="row" BorderThickness="0">
+            <StackPanel Spacing="3">
+              <TextBlock Text="It is free, including at work" FontWeight="SemiBold" />
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="No paid tier, no trial, no watermark, no per-minute limit. GPL-3.0, source on GitHub." />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="card">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <TextBlock Text="What the numbers mean" FontWeight="SemiBold" />
+          </Border>
+
+          <Border Classes="row">
+            <StackPanel Spacing="3">
+              <TextBlock Text="Loudness, in LUFS" FontWeight="SemiBold" />
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="How loud a recording actually sounds, measured the way broadcasters and streaming services measure it. Peak level does not tell you this: a recording can peak at full scale and still sound quiet. Online audio and podcasts sit at about -16 LUFS, broadcast at -23." />
+            </StackPanel>
+          </Border>
+
+          <Border Classes="row" BorderThickness="0">
+            <StackPanel Spacing="3">
+              <TextBlock Text="How far the voice sits above the background" FontWeight="SemiBold" />
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="The gap between the loudness and the level of the quiet parts. This is the number SoundGeek reports, rather than the background level on its own, because turning a quiet recording up raises both by the same amount and would make a cleanup look like it had added noise." />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="card">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <TextBlock Text="Where things are kept" FontWeight="SemiBold" />
+          </Border>
+
+          <Border Classes="row">
+            <StackPanel Spacing="4">
+              <TextBlock Text="Speech model" FontWeight="SemiBold" />
+              <TextBlock Text="{Binding ModelFolder}" Classes="mono" TextWrapping="Wrap" />
+            </StackPanel>
+          </Border>
+
+          <Border Classes="row" BorderThickness="0">
+            <StackPanel Spacing="4">
+              <TextBlock Text="ffmpeg" FontWeight="SemiBold" />
+              <TextBlock Text="{Binding FfmpegLocation}" Classes="mono" TextWrapping="Wrap" />
+              <TextBlock Classes="sub" Margin="0,2,0,0"
+                         Text="Looked for next to SoundGeek first, then on the system path." />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

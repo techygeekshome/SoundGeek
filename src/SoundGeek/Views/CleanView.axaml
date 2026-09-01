@@ -1,0 +1,140 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:SoundGeek.ViewModels"
+             x:Class="SoundGeek.Views.CleanView"
+             x:DataType="vm:ShellViewModel">
+
+  <ScrollViewer>
+    <StackPanel Margin="26,20" Spacing="16">
+
+      <!-- Anything standing between the user and a cleaned file, said once, at the top -->
+      <Border Classes="band" IsVisible="{Binding HasReadinessProblem}">
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <Border Width="4" CornerRadius="2" Background="{StaticResource Amber}" />
+          <TextBlock Text="{Binding Readiness}" Classes="sub" MaxWidth="720"
+                     VerticalAlignment="Center" TextWrapping="Wrap" />
+        </StackPanel>
+      </Border>
+
+      <!-- = what to do -->
+      <Border Classes="card">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock Grid.Column="0" Text="How much to clean" FontWeight="SemiBold" />
+              <TextBlock Grid.Column="1" Classes="meta" VerticalAlignment="Center"
+                         Text="Applies to everything in the queue" />
+            </Grid>
+          </Border>
+
+          <Grid Margin="17,15" ColumnDefinitions="*,16,Auto" RowDefinitions="Auto,Auto,Auto,Auto">
+
+            <StackPanel Grid.Row="0" Grid.Column="0" Spacing="5">
+              <TextBlock Text="Cleanup" FontSize="12" Foreground="{StaticResource Txt2}" />
+              <ComboBox ItemsSource="{Binding Modes}" SelectedItem="{Binding SelectedMode}"
+                        HorizontalAlignment="Stretch" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="2" Spacing="5" IsVisible="{Binding IsGentle}">
+              <TextBlock Text="How much" FontSize="12" Foreground="{StaticResource Txt2}" />
+              <ComboBox ItemsSource="{Binding Strengths}" SelectedItem="{Binding SelectedStrength}"
+                        MinWidth="130" />
+            </StackPanel>
+
+            <!-- The honest sentence about whichever mode is selected, always on screen -->
+            <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                       Text="{Binding ModeExplanation}" Classes="sub"
+                       Margin="0,10,0,0" TextWrapping="Wrap" MaxWidth="740"
+                       HorizontalAlignment="Left" />
+
+            <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                        Orientation="Horizontal" Spacing="22" Margin="0,16,0,0">
+              <CheckBox IsChecked="{Binding RemoveHum}" Content="Take out mains hum" />
+              <CheckBox IsChecked="{Binding RemoveRumble}" Content="Take out rumble" />
+              <CheckBox IsChecked="{Binding EvenOutLevels}" Content="Even out the levels" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Spacing="5"
+                        Margin="0,14,0,0" IsVisible="{Binding EvenOutLevels}">
+              <TextBlock Text="Loudness to aim for" FontSize="12" Foreground="{StaticResource Txt2}" />
+              <ComboBox ItemsSource="{Binding Targets}" SelectedItem="{Binding SelectedTarget}"
+                        MinWidth="330" HorizontalAlignment="Left" />
+            </StackPanel>
+          </Grid>
+
+          <Border Classes="row" BorderThickness="0,1,0,0">
+            <TextBlock Classes="sub" TextWrapping="Wrap"
+                       Text="The cleaned copy is written next to the file it came from, named after it. The original is only ever read, and if a cleaned copy is already there the next one is numbered rather than replacing it." />
+          </Border>
+        </StackPanel>
+      </Border>
+
+      <!-- = empty state -->
+      <Border Classes="drop" IsVisible="{Binding !HasJobs}" MinHeight="220">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="9">
+          <TextBlock Text="Drop recordings here" FontSize="16" FontWeight="SemiBold"
+                     HorizontalAlignment="Center" />
+          <TextBlock Classes="sub" HorizontalAlignment="Center" TextAlignment="Center" MaxWidth="480"
+                     Text="WAV, MP3, M4A, FLAC, OGG, WMA, MP4, MKV, MOV, AVI and WebM. They are read on this machine and nothing is uploaded." />
+          <Button Classes="toolbtn" Content="Choose files…" HorizontalAlignment="Center"
+                  Margin="0,6,0,0" Click="OnAddFiles" />
+        </StackPanel>
+      </Border>
+
+      <!-- = queue -->
+      <Border Classes="card" IsVisible="{Binding HasJobs}">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock Grid.Column="0" Text="Queue" FontWeight="SemiBold" />
+              <TextBlock Grid.Column="1" Classes="meta" VerticalAlignment="Center"
+                         Text="One file at a time - the filters already use every core" />
+            </Grid>
+          </Border>
+
+          <ItemsControl ItemsSource="{Binding Jobs}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate x:DataType="vm:JobViewModel">
+                <Border Classes="row">
+                  <Grid ColumnDefinitions="4,14,*,Auto" RowDefinitions="Auto,Auto,Auto,Auto">
+
+                    <Border Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Width="4"
+                            CornerRadius="2" Background="{Binding StateBrush}" />
+
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding FileName}"
+                               FontWeight="SemiBold" FontSize="13.5"
+                               TextTrimming="CharacterEllipsis" MaxWidth="520"
+                               HorizontalAlignment="Left" />
+
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Status}" Classes="sub"
+                               Margin="0,3,0,0" TextWrapping="Wrap" MaxWidth="600"
+                               HorizontalAlignment="Left" />
+
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding Detail}" Classes="meta"
+                               Margin="0,5,0,0" IsVisible="{Binding HasDetail}"
+                               TextWrapping="Wrap" MaxWidth="600" HorizontalAlignment="Left" />
+
+                    <ProgressBar Grid.Row="3" Grid.Column="2" Height="4" Margin="0,9,0,2"
+                                 Minimum="0" Maximum="100" Value="{Binding Progress}"
+                                 IsVisible="{Binding ShowProgress}" />
+
+                    <StackPanel Grid.Row="0" Grid.RowSpan="4" Grid.Column="3"
+                                Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                      <Button Classes="ghost" Content="Open"
+                              Command="{Binding OpenFile}" IsVisible="{Binding HasOutput}" />
+                      <Button Classes="ghost" Content="Open folder"
+                              Command="{Binding OpenFolder}" IsVisible="{Binding HasOutput}" />
+                      <TextBlock Text="{Binding StateText}" Classes="meta"
+                                 VerticalAlignment="Center" MinWidth="52" TextAlignment="Right" />
+                    </StackPanel>
+                  </Grid>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

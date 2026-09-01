@@ -1,0 +1,96 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:SoundGeek.ViewModels"
+        xmlns:views="clr-namespace:SoundGeek.Views"
+        x:Class="SoundGeek.Views.MainWindow"
+        x:DataType="vm:ShellViewModel"
+        Title="SoundGeek"
+        Width="1120" Height="880" MinWidth="860" MinHeight="480"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource Navy}"
+        FontFamily="{StaticResource UiFont}"
+        FontSize="13.5"
+        DragDrop.AllowDrop="True">
+
+  <!-- Window scope, not app scope: Application.Styles is built before Application.Resources,
+       so a StaticResource lookup at app level cannot see the palette. -->
+  <Window.Styles>
+    <StyleInclude Source="avares://SoundGeek/Themes/Shell.axaml" />
+  </Window.Styles>
+
+  <Grid ColumnDefinitions="212,*">
+
+    <!-- ============================================================ sidebar -->
+    <Border Grid.Column="0" Background="{StaticResource Chrome}"
+            BorderBrush="{StaticResource Line}" BorderThickness="0,0,1,0">
+      <Grid RowDefinitions="Auto,*,Auto" Margin="12,16">
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="4,0,0,18">
+          <Image Source="avares://SoundGeek/Assets/soundgeek.png"
+                 Width="34" Height="34" VerticalAlignment="Center" />
+          <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
+            <TextBlock Text="{Binding BrandName}" FontSize="15.5" FontWeight="Bold" />
+            <TextBlock Text="{Binding BrandBy}" FontSize="11"
+                       Foreground="{StaticResource Txt3}" Margin="0,1,0,0" />
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Spacing="2">
+          <Button Classes="nav" Classes.on="{Binding IsClean}"
+                  Command="{Binding ShowClean}" Content="Clean" />
+          <Button Classes="nav" Classes.on="{Binding IsModel}"
+                  Command="{Binding ShowModel}" Content="Model" />
+          <Button Classes="nav" Classes.on="{Binding IsSettings}"
+                  Command="{Binding ShowSettings}" Content="Settings" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Spacing="7">
+          <Button Classes="ghost" Content="Check for updates" Click="OnCheckUpdates" />
+          <Button Classes="ghost" Content="About" Click="OnAbout" />
+          <TextBlock Text="{Binding VersionText, StringFormat='v{0}'}"
+                     FontSize="11" Foreground="{StaticResource Txt4}"
+                     HorizontalAlignment="Center" Margin="0,4,0,0" />
+        </StackPanel>
+      </Grid>
+    </Border>
+
+    <!-- ============================================================== body -->
+    <Grid Grid.Column="1" RowDefinitions="Auto,*">
+
+      <Border Grid.Row="0" Padding="26,26,26,15"
+              BorderBrush="{StaticResource LineSoft}" BorderThickness="0,0,0,1">
+        <Grid ColumnDefinitions="*,Auto">
+          <StackPanel Grid.Column="0" VerticalAlignment="Center">
+            <TextBlock Text="{Binding PageTitle}" FontSize="21" FontWeight="SemiBold" />
+            <TextBlock Text="{Binding StatusLine}" Classes="sub"
+                       FontSize="12.5" Margin="0,4,0,0" MaxWidth="620"
+                       HorizontalAlignment="Left" />
+          </StackPanel>
+
+          <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="10"
+                      VerticalAlignment="Center" IsVisible="{Binding IsClean}">
+            <ProgressBar Width="120" Height="4" IsIndeterminate="True"
+                         Foreground="{StaticResource BlueLight}"
+                         VerticalAlignment="Center"
+                         IsVisible="{Binding IsRunning}" />
+            <Button Classes="toolbtn" Content="Add files…" Click="OnAddFiles"
+                    IsEnabled="{Binding NotRunning}" />
+            <Button Classes="toolbtn" Content="Clear finished" Click="OnClearFinished"
+                    IsEnabled="{Binding NotRunning}" />
+            <Button Classes="danger" Content="Stop" Click="OnStop"
+                    IsVisible="{Binding IsRunning}" />
+            <Button Classes="primary" Content="Clean" Click="OnStart"
+                    IsVisible="{Binding NotRunning}"
+                    IsEnabled="{Binding CanStart}" />
+          </StackPanel>
+        </Grid>
+      </Border>
+
+      <Panel Grid.Row="1">
+        <views:CleanView IsVisible="{Binding IsClean}" />
+        <views:ModelView IsVisible="{Binding IsModel}" />
+        <views:SettingsView IsVisible="{Binding IsSettings}" />
+      </Panel>
+    </Grid>
+  </Grid>
+</Window>

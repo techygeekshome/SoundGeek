@@ -1,0 +1,92 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:SoundGeek.ViewModels"
+             x:Class="SoundGeek.Views.ModelView"
+             x:DataType="vm:ShellViewModel">
+
+  <ScrollViewer>
+    <StackPanel Margin="26,20" Spacing="16" MaxWidth="820" HorizontalAlignment="Left">
+
+      <Border Classes="band">
+        <StackPanel Spacing="6">
+          <TextBlock Text="Two of the three cleanups need nothing at all" FontWeight="SemiBold" FontSize="13.5" />
+          <TextBlock Classes="sub" MaxWidth="740" HorizontalAlignment="Left" TextWrapping="Wrap"
+                     Text="Levels and hum, and the gentle noise reduction, are ordinary filtering and work the moment SoundGeek is installed. Only the strongest cleanup uses a trained model, and that is the one file on this screen. It is the only thing SoundGeek ever downloads, and it only happens when you press the button." />
+        </StackPanel>
+      </Border>
+
+      <Border Classes="card">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock Grid.Column="0" Text="Speech model" FontWeight="SemiBold" />
+              <TextBlock Grid.Column="1" Classes="meta" VerticalAlignment="Center"
+                         Text="For the strongest cleanup only" />
+            </Grid>
+          </Border>
+
+          <Border Classes="row" BorderThickness="0">
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+
+              <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Spacing="10">
+                <TextBlock Text="GTCRN" FontWeight="SemiBold" FontSize="13.5" />
+                <TextBlock Text="{Binding Model.SizeText}" Classes="mono" VerticalAlignment="Center" />
+              </StackPanel>
+
+              <TextBlock Grid.Row="1" Grid.Column="0" Classes="sub" Margin="0,3,0,0"
+                         MaxWidth="560" HorizontalAlignment="Left" TextWrapping="Wrap"
+                         Text="A small speech enhancement network. It separates a voice from the noise around it far better than any filter can, and it does it on this machine. It works at 16 kHz in mono, so that is what comes back out." />
+
+              <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Model.Origin}"
+                         Classes="meta" Margin="0,6,0,0" TextWrapping="Wrap"
+                         MaxWidth="560" HorizontalAlignment="Left" />
+
+              <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding Model.Checksum}"
+                         Classes="mono" FontSize="11" Margin="0,4,0,0" TextWrapping="Wrap"
+                         MaxWidth="560" HorizontalAlignment="Left"
+                         Foreground="{StaticResource Txt4}" />
+
+              <ProgressBar Grid.Row="4" Grid.Column="0" Height="4" Margin="0,10,0,0"
+                           Minimum="0" Maximum="100" Value="{Binding Model.Progress}"
+                           IsVisible="{Binding Model.IsDownloading}" />
+
+              <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding Model.Note}" Classes="meta"
+                         Margin="0,7,0,0" TextWrapping="Wrap" MaxWidth="560"
+                         HorizontalAlignment="Left"
+                         IsVisible="{Binding Model.Note, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+
+              <StackPanel Grid.Row="0" Grid.RowSpan="6" Grid.Column="1"
+                          Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                <Button Classes="toolbtn" Content="Download"
+                        Command="{Binding Model.Download}" IsVisible="{Binding Model.IsMissing}" />
+                <Button Classes="toolbtn" Content="Stop"
+                        Command="{Binding Model.Cancel}" IsVisible="{Binding Model.IsDownloading}" />
+                <TextBlock Text="Downloaded" Classes="meta" VerticalAlignment="Center"
+                           Foreground="{StaticResource GreenLight}"
+                           IsVisible="{Binding Model.IsDownloaded}" />
+                <Button Classes="ghost" Content="Remove"
+                        Command="{Binding Model.Remove}" IsVisible="{Binding Model.CanRemove}" />
+              </StackPanel>
+            </Grid>
+          </Border>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="card">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <TextBlock Text="Where it is kept" FontWeight="SemiBold" />
+          </Border>
+          <Border Classes="row" BorderThickness="0">
+            <StackPanel Spacing="4">
+              <TextBlock Text="{Binding ModelFolder}" Classes="mono" TextWrapping="Wrap" />
+              <TextBlock Classes="sub" Margin="0,2,0,0" TextWrapping="Wrap"
+                         Text="Under your own profile rather than beside the program, so a reinstall does not mean downloading it again. It is checked against the checksum above before it is kept, and deleted rather than used if it does not match." />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>
