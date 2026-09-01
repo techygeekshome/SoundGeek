@@ -1,0 +1,174 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!--
+    TranscribeGeek's control styles, in the same Themes/Dark.axaml + Themes/Shell.axaml pair
+    every app in the range carries. The palette values are never written here - only token
+    names - so a change in Dark.axaml lands everywhere at once.
+
+    Included at *window* scope from MainWindow, not app scope: Application.Styles is built
+    before Application.Resources, so a StaticResource lookup at app level cannot see the
+    palette, and app scope would also push the bare TextBlock rule into the shared About window.
+  -->
+
+  <Style Selector="TextBlock">
+    <Setter Property="Foreground" Value="{StaticResource Txt}" />
+  </Style>
+  <Style Selector="Button.nav">
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="HorizontalContentAlignment" Value="Left" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="7" />
+    <Setter Property="Padding" Value="10,9" />
+    <Setter Property="Foreground" Value="{StaticResource Txt2}" />
+  </Style>
+  <Style Selector="Button.nav:pointerover /template/ ContentPresenter">
+    <Setter Property="Background" Value="{StaticResource PanelHover}" />
+  </Style>
+  <Style Selector="Button.nav.on /template/ ContentPresenter">
+    <Setter Property="Background" Value="{StaticResource Selected}" />
+  </Style>
+  <Style Selector="Button.nav.on">
+    <Setter Property="Foreground" Value="{StaticResource Txt}" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+  </Style>
+  <Style Selector="Button.ghost">
+    <Setter Property="Background" Value="{StaticResource Panel}" />
+    <Setter Property="BorderBrush" Value="{StaticResource Line}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="7" />
+    <Setter Property="Foreground" Value="{StaticResource Txt2}" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="Padding" Value="10,7" />
+    <Setter Property="FontSize" Value="11" />
+  </Style>
+  <Style Selector="Button.ghost:pointerover /template/ ContentPresenter">
+    <Setter Property="Background" Value="{StaticResource PanelHover}" />
+  </Style>
+  
+
+  <!-- The one primary action per screen -->
+  <Style Selector="Button.primary">
+    <Setter Property="Background" Value="{StaticResource Blue}" />
+    <Setter Property="Foreground" Value="{StaticResource Txt}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="7" />
+    <Setter Property="Padding" Value="15,8" />
+    <Setter Property="FontSize" Value="13" />
+    <Setter Property="MinWidth" Value="96" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+  </Style>
+  <Style Selector="Button.primary:pointerover /template/ ContentPresenter">
+    <Setter Property="Background" Value="{StaticResource BlueHover}" />
+  </Style>
+  <Style Selector="Button.primary:disabled /template/ ContentPresenter">
+    <Setter Property="Background" Value="{StaticResource ButtonBg}" />
+    <Setter Property="TextBlock.Foreground" Value="{StaticResource Txt4}" />
+  </Style>
+
+  <!-- A button that sits in a header row rather than the sidebar: no stretch -->
+  <Style Selector="Button.toolbtn">
+    <Setter Property="Background" Value="{StaticResource ButtonBg}" />
+    <Setter Property="BorderBrush" Value="{StaticResource ButtonBorder}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="7" />
+    <Setter Property="Foreground" Value="{StaticResource Txt2}" />
+    <Setter Property="Padding" Value="14,8" />
+    <Setter Property="FontSize" Value="12" />
+  </Style>
+  <Style Selector="Button.toolbtn:pointerover /template/ ContentPresenter">
+    <Setter Property="Background" Value="{StaticResource PanelHover}" />
+  </Style>
+  <Style Selector="Button.toolbtn:disabled /template/ ContentPresenter">
+    <Setter Property="TextBlock.Foreground" Value="{StaticResource Txt4}" />
+  </Style>
+
+  <Style Selector="Button.danger">
+    <Setter Property="Background" Value="{StaticResource Red}" />
+    <Setter Property="Foreground" Value="{StaticResource Txt}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="7" />
+    <Setter Property="Padding" Value="12,7" />
+    <Setter Property="FontSize" Value="12" />
+  </Style>
+
+  <!-- Cards -->
+  <Style Selector="Border.card">
+    <Setter Property="Background" Value="{StaticResource Panel}" />
+    <Setter Property="BorderBrush" Value="{StaticResource Line}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="7" />
+  </Style>
+  <Style Selector="Border.cardhead">
+    <Setter Property="BorderBrush" Value="{StaticResource Line}" />
+    <Setter Property="BorderThickness" Value="0,0,0,1" />
+    <Setter Property="Padding" Value="17,13" />
+  </Style>
+  <Style Selector="Border.row">
+    <Setter Property="BorderBrush" Value="{StaticResource LineSoft}" />
+    <Setter Property="BorderThickness" Value="0,0,0,1" />
+    <Setter Property="Padding" Value="17,14" />
+  </Style>
+  <Style Selector="Border.band">
+    <Setter Property="Background" Value="{StaticResource Panel2}" />
+    <Setter Property="BorderBrush" Value="{StaticResource Line}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="7" />
+    <Setter Property="Padding" Value="16,14" />
+  </Style>
+
+  <!-- The drop target on the Transcribe screen -->
+  <Style Selector="Border.drop">
+    <Setter Property="Background" Value="{StaticResource Panel}" />
+    <Setter Property="BorderBrush" Value="{StaticResource Line2}" />
+    <Setter Property="BorderThickness" Value="2" />
+    <Setter Property="CornerRadius" Value="7" />
+    <Setter Property="Padding" Value="30" />
+  </Style>
+
+  <Style Selector="TextBlock.sub">
+    <Setter Property="FontSize" Value="12" />
+    <Setter Property="Foreground" Value="{StaticResource Txt3}" />
+    <Setter Property="TextWrapping" Value="Wrap" />
+  </Style>
+  <Style Selector="TextBlock.meta">
+    <Setter Property="FontSize" Value="11.5" />
+    <Setter Property="Foreground" Value="{StaticResource Txt3}" />
+  </Style>
+  <Style Selector="TextBlock.mono">
+    <Setter Property="FontFamily" Value="{StaticResource MonoFont}" />
+    <Setter Property="FontSize" Value="12.5" />
+    <Setter Property="Foreground" Value="{StaticResource Txt2}" />
+  </Style>
+
+  <Style Selector="TextBox">
+    <Setter Property="Background" Value="{StaticResource ControlBg}" />
+    <Setter Property="BorderBrush" Value="{StaticResource ButtonBorder}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="7" />
+    <Setter Property="Foreground" Value="{StaticResource Txt}" />
+    <Setter Property="Padding" Value="10,7" />
+    <Setter Property="FontSize" Value="12.5" />
+  </Style>
+  <Style Selector="ComboBox">
+    <Setter Property="Background" Value="{StaticResource ControlBg}" />
+    <Setter Property="BorderBrush" Value="{StaticResource ButtonBorder}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="7" />
+    <Setter Property="Foreground" Value="{StaticResource Txt}" />
+    <Setter Property="FontSize" Value="12.5" />
+  </Style>
+  <Style Selector="CheckBox">
+    <Setter Property="Foreground" Value="{StaticResource Txt2}" />
+  </Style>
+  <Style Selector="ProgressBar">
+    <Setter Property="Foreground" Value="{StaticResource Blue}" />
+    <Setter Property="Background" Value="{StaticResource Line2}" />
+  </Style>
+  <Style Selector="ScrollViewer">
+    <Setter Property="Background" Value="Transparent" />
+  </Style>
+
+</Styles>
