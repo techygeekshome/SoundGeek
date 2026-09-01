@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{9A19103F-16F7-32DF-8CD3-0BDF7B44A0DB}") = "SoundGeek", "src\SoundGeek\SoundGeek.csproj", "{A1000000-0000-0000-0000-000000000001}"
+EndProject
+Project("{9A19103F-16F7-32DF-8CD3-0BDF7B44A0DB}") = "SoundGeek.Core", "src\SoundGeek.Core\SoundGeek.Core.csproj", "{A1000000-0000-0000-0000-000000000002}"
+EndProject
+Project("{9A19103F-16F7-32DF-8CD3-0BDF7B44A0DB}") = "TechyGeeksHome.Common", "src\TechyGeeksHome.Common\TechyGeeksHome.Common.csproj", "{A1000000-0000-0000-0000-000000000003}"
+EndProject
+Project("{9A19103F-16F7-32DF-8CD3-0BDF7B44A0DB}") = "SoundGeek.Tests", "tests\SoundGeek.Tests\SoundGeek.Tests.csproj", "{A1000000-0000-0000-0000-000000000004}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1000000-0000-0000-0000-000000000001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1000000-0000-0000-0000-000000000001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1000000-0000-0000-0000-000000000001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1000000-0000-0000-0000-000000000001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1000000-0000-0000-0000-000000000002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1000000-0000-0000-0000-000000000002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1000000-0000-0000-0000-000000000002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1000000-0000-0000-0000-000000000002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1000000-0000-0000-0000-000000000003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1000000-0000-0000-0000-000000000003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1000000-0000-0000-0000-000000000003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1000000-0000-0000-0000-000000000003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1000000-0000-0000-0000-000000000004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1000000-0000-0000-0000-000000000004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1000000-0000-0000-0000-000000000004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1000000-0000-0000-0000-000000000004}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
