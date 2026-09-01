@@ -7,7 +7,7 @@
     <authors>TechyGeeksHome</authors>
     <owners>techygeekshome</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <license type="expression">GPL-3.0-or-later</license>
+    <licenseUrl>https://github.com/techygeekshome/SoundGeek/blob/main/LICENSE</licenseUrl>
     <projectUrl>https://techygeekshome.info/soundgeek/</projectUrl>
     <iconUrl>https://cdn.jsdelivr.net/gh/techygeekshome/SoundGeek@main/icons/soundgeek-256.png</iconUrl>
     <description>SoundGeek cleans up a recording on your own machine and writes the result beside the
