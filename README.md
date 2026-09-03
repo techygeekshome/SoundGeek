@@ -46,6 +46,21 @@ Windows 10 or 11, 64-bit. Nothing else to install.
 - Queues as many files as you like and works through them one at a time
 - Reports what it found and what it changed, in numbers
 
+
+## Screenshots
+
+**Clean** — pick how hard to clean, then see exactly what changed.
+
+<img src="docs/screenshots/01-clean.png" alt="The Clean screen with a finished cleanup and the before and after numbers" width="820">
+
+**The model** — two of the three cleanups need nothing downloaded at all.
+
+<img src="docs/screenshots/02-three-cleanups.png" alt="The Model screen" width="820">
+
+**Settings** — a plain list of what SoundGeek will not do.
+
+<img src="docs/screenshots/05-settings.png" alt="The Settings screen" width="820">
+
 ---
 
 ## Three ways to clean
