@@ -19,6 +19,14 @@
 
 ---
 
+## 🎬 See it in action
+
+[![SoundGeek demo video](https://img.youtube.com/vi/ssu5cK18Q3Y/maxresdefault.jpg)](https://www.youtube.com/watch?v=ssu5cK18Q3Y)
+
+What it actually does to a noisy recording, in under a minute.
+
+---
+
 Drop in a recording and SoundGeek writes a cleaned copy beside it: background noise gone, mains
 hum gone, levels evened out. It runs entirely on this machine, so an interview or a meeting never
 leaves the computer it is on. No account, no upload, no per-minute limit, no watermark.
