@@ -23,6 +23,7 @@ public sealed class ShellViewModel : ObservableObject
         ShowSettings = new RelayCommand(() => Page = "Settings");
 
         Model = new ModelViewModel(this);
+        Ffmpeg = new FfmpegViewModel(this);
         SelectedMode = Modes.First(m => m.Mode == CleanupMode.Gentle);
 
         RefreshReadiness();
@@ -97,6 +98,7 @@ public sealed class ShellViewModel : ObservableObject
     public void RefreshReadiness()
     {
         Model.Refresh();
+        Ffmpeg?.Refresh();
 
         if (SelectedMode.Mode == CleanupMode.Voice && !ModelCatalog.IsDownloaded)
         {
@@ -107,8 +109,9 @@ public sealed class ShellViewModel : ObservableObject
         }
         else if (!MediaDecoder.FfmpegAvailable)
         {
-            Readiness = "ffmpeg was not found, so only WAV files can be read. Put ffmpeg.exe next to " +
-                        "SoundGeek to handle MP3, M4A, MP4 and the rest.";
+            Readiness = "ffmpeg was not found, so only WAV files can be read. Open Model and choose " +
+                        "Get ffmpeg to handle MP3, M4A, MP4 and the rest. Nothing is downloaded " +
+                        "without you asking.";
             HasReadinessProblem = true;
         }
         else
@@ -119,9 +122,13 @@ public sealed class ShellViewModel : ObservableObject
 
         OnPropertyChanged(nameof(CanStart));
         OnPropertyChanged(nameof(StatusLine));
+        OnPropertyChanged(nameof(FfmpegLocation));
     }
 
     public ModelViewModel Model { get; }
+
+    /// <summary>The ffmpeg row on the Model screen.</summary>
+    public FfmpegViewModel Ffmpeg { get; }
 
     /// <summary>
     /// Called after the model is downloaded or removed. Somebody who has just fetched it almost
