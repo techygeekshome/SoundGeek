@@ -71,7 +71,6 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [CustomMessages]
 english.CreateDesktopShortcut=Create a &desktop shortcut
-english.LaunchApp=Open {#AppName}
 english.WebSite={#AppName} on the web
 
 [Tasks]
@@ -89,7 +88,7 @@ Name: "{group}\{cm:UninstallProgram,{#AppName}}"; Filename: "{uninstallexe}"
 Name: "{autodesktop}\{#AppName}";                 Filename: "{app}\{#AppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\{#AppExeName}"; Description: "{cm:LaunchApp}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\{#AppExeName}"; Description: "{cm:LaunchProgram,{#AppName}}"; Flags: nowait postinstall skipifsilent
 
 [UninstallDelete]
 ; The downloaded speech model is left behind on purpose. It is small, but throwing away
